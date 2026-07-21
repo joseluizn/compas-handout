@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caso COMPAS — mais informações</title>
+<meta name="description" content="Curva de calibração, matrizes de confusão e metodologia da reprodução da análise da ProPublica sobre o COMPAS.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="topo">
+  <a href="index.html">← Voltar à narrativa</a>
+  <span>Mais informações</span>
+</nav>
+
+<main>
+
+  <section class="passo hero">
+    <p class="rotulo">Detalhe técnico</p>
+    <h1>Os números por trás do caso</h1>
+    <p class="sub">Tudo aqui vem da reprodução da análise da ProPublica sobre os
+      <span id="meta-n-analise">—</span> réus de Broward County, calculada pelo script
+      <code>analysis/build_metrics.py</code>.</p>
+  </section>
+
+  <section class="passo" id="calibracao">
+    <h2>Curva de calibração</h2>
+    <p>Para cada escore de 1 a 10, a fração das pessoas com aquele escore que foi presa de novo em
+      até dois anos. A faixa é o intervalo de confiança de 95% (Wilson). As duas linhas praticamente
+      se sobrepõem: um "risco 7" quer dizer aproximadamente a mesma coisa nos dois grupos.</p>
+    <div class="legenda" id="legenda-calibracao"></div>
+    <figure>
+      <div class="rolavel" id="grafico-calibracao"></div>
+      <figcaption>Taxa observada de reincidência em dois anos por escore do COMPAS, por grupo
+        racial. Broward County, 2013–2014.</figcaption>
+    </figure>
+    <div class="rolavel" id="tabela-calibracao"></div>
+  </section>
+
+  <section class="passo">
+    <h2>Matrizes de confusão</h2>
+    <p>Contagens brutas de pessoas, cruzando a classificação do COMPAS (corte no escore 5) com o
+      que de fato aconteceu em dois anos.</p>
+    <div class="matrizes" id="matrizes"></div>
+  </section>
+
+  <section class="passo">
+    <h2>Metodologia</h2>
+    <h3>Amostra</h3>
+    <p>Partimos do arquivo <code>compas-scores-two-years.csv</code> publicado pela ProPublica
+      (<span id="meta-n-bruto">—</span> registros), com os filtros de qualidade que eles aplicaram:</p>
+    <ul id="meta-filtros"></ul>
+    <p>Ficam <strong id="meta-n-analise-2">—</strong> pessoas.</p>
+
+    <h3>Classificação e desfecho</h3>
+    <p>"Alto risco" = <code>decile_score &gt;= <span id="meta-corte">—</span></code>, equivalente às
+      faixas "Medium" e "High" do próprio COMPAS. Desfecho = <code>two_year_recid</code>, isto é,
+      <strong>nova prisão registrada em até dois anos</strong> após a avaliação.</p>
+
+    <h3>Análise de sensibilidade</h3>
+    <p>A ProPublica também usa, em partes do trabalho, um corte adicional que descarta casos em que
+      a avaliação e a prisão estão a mais de 30 dias de distância
+      (<code>days_b_screening_arrest</code> entre −30 e 30). Com esse corte a amostra cai para
+      <span id="sens-n">—</span> pessoas e as taxas ficam: falso alarme
+      <span id="sens-fpr-negros">—</span> (negros) contra <span id="sens-fpr-brancos">—</span>
+      (brancos); alarme perdido <span id="sens-fnr-negros">—</span> (negros) contra
+      <span id="sens-fnr-brancos">—</span> (brancos). O padrão não muda.</p>
+
+    <h3>Limitações</h3>
+    <ul>
+      <li><strong>Reincidência é medida por nova prisão, não por novo crime.</strong> Prisão depende
+        de policiamento; bairros mais policiados produzem mais prisões para o mesmo comportamento.
+        O "desfecho real" contra o qual o algoritmo é avaliado carrega esse viés.</li>
+      <li>A comparação se restringe a réus classificados como negros ou brancos nos registros do
+        condado — outras categorias ficam de fora por tamanho de amostra.</li>
+      <li>Os dados são de um único condado, em 2013–2014, e não representam o uso do COMPAS em
+        outros lugares.</li>
+      <li>O escore observado é o que o tribunal viu; decisões tomadas com base nele podem ter
+        influenciado o desfecho medido.</li>
+    </ul>
+
+    <h3>Reprodução</h3>
+    <p>Script: <a href="https://github.com/joseluizn/compas-handout/blob/main/analysis/build_metrics.py"><code>analysis/build_metrics.py</code></a>
+      · números: <a href="data/metrics.json"><code>data/metrics.json</code></a>
+      · subconjunto usado: <a href="data/compas-derived.csv"><code>data/compas-derived.csv</code></a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="interno">
+    <p><strong>Fontes</strong></p>
+    <ul>
+      <li>Reportagem: <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Angwin, Larson, Mattu &amp; Kirchner (2016), "Machine Bias", ProPublica</a></li>
+      <li>Metodologia: <a href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">"How We Analyzed the COMPAS Recidivism Algorithm"</a></li>
+      <li>Resposta da Northpointe: <a href="https://embed.documentcloud.org/documents/2998391-ProPublica-Commentary-Final-070616/">Dieterich, Mendoza &amp; Brennan (2016)</a></li>
+      <li>Dados: <a href="https://github.com/propublica/compas-analysis">propublica/compas-analysis</a> (domínio público)</li>
+    </ul>
+    <p><a href="index.html">← Voltar à narrativa</a></p>
+  </div>
+</footer>
+
+<script src="js/metrics-data.js"></script>
+<script src="js/story.js"></script>
+</body>
+</html>

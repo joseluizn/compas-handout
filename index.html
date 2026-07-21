@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O caso COMPAS — um algoritmo pode ser justo e injusto ao mesmo tempo?</title>
+<meta name="description" content="Os dados por trás do caso COMPAS: distribuição de escores, taxas de erro e calibração, com os critérios da análise da ProPublica.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="topo">
+  <span>Caso COMPAS</span>
+  <a href="mais-informacoes.html">Mais informações →</a>
+</nav>
+
+<main>
+
+  <section class="passo hero">
+    <p class="rotulo">Ética e manipulação de dados</p>
+    <h1>Um algoritmo pode ser justo e injusto ao mesmo tempo?</h1>
+    <p class="sub">O COMPAS dá a réus americanos uma nota de risco de 1 a 10. Em 2016 a ProPublica
+      publicou que o sistema errava contra réus negros; a empresa que o vende respondeu que o
+      escore é igualmente preciso para todos. Os dois lados usam os mesmos dados.</p>
+    <p class="dica-rolagem">Role para ver os números. ↓</p>
+  </section>
+
+  <section class="passo">
+    <p class="rotulo">1 — O que é o COMPAS</p>
+    <h2>Um questionário vira uma nota de risco</h2>
+    <p>O réu responde a um questionário sobre histórico criminal, emprego, vizinhança, atitudes e
+      opiniões. O sistema devolve um <strong>escore de 1 a 10</strong> para o risco de reincidir.
+      Esse escore entra em decisões reais: fiança, condições de liberdade e, em alguns estados,
+      a própria sentença.</p>
+    <p><strong>Raça não é uma das perguntas do questionário.</strong></p>
+  </section>
+
+  <section class="passo">
+    <p class="rotulo">2 — Os dados</p>
+    <h2>Como a ProPublica montou a análise</h2>
+    <p>Os jornalistas pediram os escores de todos os réus avaliados em <strong>Broward County,
+      Flórida</strong>, entre 2013 e 2014, cruzaram com os registros criminais do condado e
+      esperaram dois anos para ver o que de fato aconteceu com cada pessoa. Os critérios que eles
+      fixaram antes de calcular qualquer número:</p>
+
+    <div class="caixa">
+      <h3>Os critérios da análise</h3>
+      <dl class="criterio">
+        <dt>Quem entra na amostra</dt>
+        <dd>Réus com escore atribuído na triagem de prisão, descartando casos sem registro
+          criminal correspondente, infrações de trânsito ordinárias
+          (<code>c_charge_degree = 'O'</code>) e escores ausentes.
+          Restam <strong id="n-total">—</strong> pessoas nos dois grupos comparados
+          (<span id="n-negros">—</span> réus negros e <span id="n-brancos">—</span> réus brancos).</dd>
+
+        <dt>O que conta como "alto risco"</dt>
+        <dd>Escore <strong>5 ou mais</strong> — o mesmo corte que o próprio COMPAS usa para separar
+          risco "baixo" de "médio/alto".</dd>
+
+        <dt>O que conta como acerto ou erro</dt>
+        <dd>O desfecho é <strong>ser preso de novo em até dois anos</strong> após a avaliação.
+          Quem foi preso de novo e tinha escore baixo, o sistema deixou passar; quem não foi preso
+          de novo e tinha escore alto, o sistema marcou à toa.</dd>
+
+        <dt>Como os erros são comparados</dt>
+        <dd>Separando as pessoas <strong>pelo que aconteceu de verdade</strong> — primeiro só quem
+          não reincidiu, depois só quem reincidiu — e perguntando, dentro de cada um desses grupos,
+          que fração o sistema classificou errado. A comparação é entre réus negros e brancos.</dd>
+      </dl>
+    </div>
+    <p>Os dados brutos e o código que reproduz cada número deste site estão
+      <a href="https://github.com/joseluizn/compas-handout">no repositório</a>.</p>
+  </section>
+
+  <section class="passo">
+    <p class="rotulo">3 — A distribuição dos escores</p>
+    <h2>As notas não se distribuem do mesmo jeito nos dois grupos</h2>
+    <p>Cada barra é a fatia do grupo que recebeu aquele escore. Se o COMPAS tratasse os dois grupos
+      da mesma forma <em>em termos de distribuição</em>, as duas séries teriam o mesmo formato.</p>
+    <div class="legenda" id="legenda-decis"></div>
+    <figure>
+      <div class="rolavel" id="grafico-decis"></div>
+      <figcaption>Distribuição dos escores de risco do COMPAS por grupo racial, Broward County
+        (2013–2014). Réus brancos se concentram nos escores baixos; réus negros se espalham por
+        toda a escala.</figcaption>
+    </figure>
+  </section>
+
+  <section class="passo">
+    <p class="rotulo">4 — A acusação</p>
+    <h2>Entre 100 pessoas iguais no desfecho, o sistema erra de forma desigual</h2>
+    <p>Cada quadro abaixo mostra <strong>100 pessoas que tiveram o mesmo desfecho real</strong>.
+      As figuras coloridas são as que o sistema classificou errado.</p>
+
+    <h3>Entre quem <em>não</em> voltou a ser preso — quantos foram marcados como alto risco?</h3>
+    <div class="waffles" id="waffles-fpr"></div>
+
+    <h3>Entre quem <em>voltou</em> a ser preso — quantos foram marcados como baixo risco?</h3>
+    <div class="waffles" id="waffles-fnr"></div>
+
+    <p style="margin-top:1.4rem">A conclusão da reportagem: os erros do sistema não caem igualmente
+      sobre os dois grupos. O falso alarme é mais frequente entre réus negros; o alarme perdido é
+      mais frequente entre réus brancos — mesmo sem raça ser uma pergunta do questionário.</p>
+  </section>
+
+  <section class="passo">
+    <p class="rotulo">5 — A defesa</p>
+    <h2>A resposta da Northpointe</h2>
+    <p>A empresa que vende o COMPAS (hoje Equivant) <strong>não contesta os números da
+      ProPublica</strong>. Ela responde apontando outra propriedade do escore: ele é
+      <strong>calibrado</strong> igualmente entre os grupos. Um "risco 7" significa a mesma
+      probabilidade real de reincidência, seja o réu negro ou branco.</p>
+    <p>Nos dados de Broward County isso se confirma: entre os classificados como alto risco,
+      <strong id="ppv-negros">—</strong> dos réus negros e <strong id="ppv-brancos">—</strong> dos
+      réus brancos foram de fato presos de novo em dois anos. Escore a escore, as duas curvas
+      praticamente se sobrepõem.</p>
+    <p>Pela régua da empresa, é exatamente isso que um escore não discriminatório deveria fazer:
+      dizer a verdade, na mesma medida, para todos os grupos.</p>
+    <p><a href="mais-informacoes.html#calibracao">Veja a curva de calibração →</a></p>
+  </section>
+
+  <section class="passo">
+    <p class="rotulo">6 — Experimente</p>
+    <h2>Um sistema calibrado, dois grupos, uma alavanca</h2>
+    <p>Abaixo, dois grupos hipotéticos de 100 réus, como na tabela do hand-out. O sistema é
+      igualmente preciso nos dois: entre os classificados como <strong>alto risco, 7 em cada 10
+      reincidem</strong>; entre os de <strong>baixo risco, 8 em cada 10 não reincidem</strong> —
+      as mesmas proporções nos dois grupos. O Grupo 1 tem 30 reincidentes em 100. Mexa na taxa do
+      Grupo 2 e observe as taxas de erro.</p>
+
+    <div class="widget">
+      <label for="slider-base">Reincidentes no Grupo 2: <span id="valor-base">60</span> em cada 100</label>
+      <input type="range" id="slider-base" min="25" max="68" step="1" value="60">
+      <div class="grade-num" id="saida-widget"></div>
+      <p class="nota-widget" id="nota-widget"></p>
+    </div>
+    <p style="margin-top:1rem"><small>Modelo simplificado: em ambos os grupos o escore acerta
+      70% entre os classificados como alto risco e 80% entre os de baixo risco. A única coisa que
+      muda é a taxa de reincidência do Grupo 2 — que, com essas duas proporções fixas, determina
+      sozinha quantas pessoas o sistema marca como alto risco.</small></p>
+  </section>
+
+  <section class="passo">
+    <p class="rotulo">7 — Tarefa</p>
+    <h2>Em grupo, ~15 minutos</h2>
+    <p>Formem grupos de 3 a 4 pessoas e discutam: <strong>quem está certo, a ProPublica ou a
+      Northpointe?</strong></p>
+    <ol class="perguntas">
+      <li>O que exatamente cada lado está medindo?</li>
+      <li>Quem paga o preço pelos erros do sistema — e esse preço é igual para todo mundo?</li>
+      <li>O que "tratar os grupos igualmente" deveria significar aqui?</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="interno">
+    <p><strong>Fontes</strong></p>
+    <ul>
+      <li>Reportagem: <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Angwin, Larson, Mattu &amp; Kirchner (2016), "Machine Bias", ProPublica</a></li>
+      <li>Metodologia: <a href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">"How We Analyzed the COMPAS Recidivism Algorithm"</a></li>
+      <li>Resposta da Northpointe: <a href="https://embed.documentcloud.org/documents/2998391-ProPublica-Commentary-Final-070616/">Dieterich, Mendoza &amp; Brennan (2016)</a></li>
+      <li>Dados: <a href="https://github.com/propublica/compas-analysis">propublica/compas-analysis</a> (domínio público)</li>
+    </ul>
+    <p>Gráficos gerados a partir dos dados originais. Código e números:
+      <a href="https://github.com/joseluizn/compas-handout">github.com/joseluizn/compas-handout</a>.</p>
+  </div>
+</footer>
+
+<script src="js/metrics-data.js"></script>
+<script src="js/story.js"></script>
+<script src="js/impossibility.js"></script>
+</body>
+</html>
