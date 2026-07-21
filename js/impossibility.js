@@ -49,10 +49,10 @@
     valorBase.textContent = base2;
 
     saida.innerHTML =
-      cartao("Falso alarme · Grupo 1", fmt(g1.fpr), COR.negros) +
-      cartao("Falso alarme · Grupo 2", fmt(g2.fpr), COR.brancos) +
-      cartao("Alarme perdido · Grupo 1", fmt(g1.fnr), COR.negros) +
-      cartao("Alarme perdido · Grupo 2", fmt(g2.fnr), COR.brancos);
+      cartao("Falso positivo · Grupo 1", fmt(g1.fpr), COR.negros) +
+      cartao("Falso positivo · Grupo 2", fmt(g2.fpr), COR.brancos) +
+      cartao("Falso negativo · Grupo 1", fmt(g1.fnr), COR.negros) +
+      cartao("Falso negativo · Grupo 2", fmt(g2.fnr), COR.brancos);
 
     var difFpr = Math.abs(g1.fpr - g2.fpr) * 100;
     if (base2 === BASE_G1) {
@@ -60,7 +60,7 @@
         "e só agora as taxas de erro coincidem.</strong>";
     } else {
       nota.innerHTML = "Diferença de <strong>" +
-        difFpr.toFixed(1).replace(".", ",") + " p.p.</strong> no falso alarme, com o sistema " +
+        difFpr.toFixed(1).replace(".", ",") + " p.p.</strong> no falso positivo, com o sistema " +
         "acertando exatamente na mesma proporção nos dois grupos (7 em 10 entre os de alto risco, " +
         "8 em 10 entre os de baixo risco).";
     }

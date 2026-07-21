@@ -291,8 +291,8 @@
         "</tbody></table>" +
         "<p class=\"derivadas\">n = " + num(b.n) +
         " · taxa real de reincidência = " + pct(b.base_rate) +
-        "<br>falso alarme (FPR) = " + num(c.fp) + "/" + num(c.fp + c.tn) + " = " + pct(b.fpr) +
-        "<br>alarme perdido (FNR) = " + num(c.fn) + "/" + num(c.fn + c.tp) + " = " + pct(b.fnr) +
+        "<br>falso positivo (FPR) = " + num(c.fp) + "/" + num(c.fp + c.tn) + " = " + pct(b.fpr) +
+        "<br>falso negativo (FNR) = " + num(c.fn) + "/" + num(c.fn + c.tp) + " = " + pct(b.fnr) +
         "<br>acerto entre os de alto risco (PPV) = " + num(c.tp) + "/" + num(c.tp + c.fp) +
         " = " + pct(b.ppv) +
         "<br>acurácia geral = " + pct(b.accuracy) + "</p>";
