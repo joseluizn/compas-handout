@@ -130,7 +130,9 @@ figcaption {
 .widget { background: var(--bg-alt); border: 1px solid var(--linha); border-radius: 10px; padding: 1.2rem; }
 .widget label { display: block; font-weight: 700; margin-bottom: .3rem; }
 .widget input[type="range"] { width: 100%; accent-color: var(--azul); }
-.grade-num { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .9rem; margin-top: 1rem; }
+.grade-num { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .9rem; margin-top: 1rem; }
+.grade-num .k { text-transform: none; letter-spacing: 0; line-height: 1.35; min-height: 3.4em; }
+.grade-num .k small { display: block; opacity: .75; }
 .num { background: var(--bg); border: 1px solid var(--linha); border-radius: 8px; padding: .6rem .75rem; }
 .num .k { font-size: .8rem; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .05em; }
 .num .v { font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; }
