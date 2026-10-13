@@ -9,9 +9,10 @@ ProPublica × Northpointe (COMPAS, Broward County).
 
 ```
 index.html              1. O caso: o COMPAS e a acusação da ProPublica
-dados.html              2. Dados: distribuição dos escores e taxas de erro por grupo
-defesa.html             3. Defesa: a resposta da Northpointe (calibração)
-painel.html             4. Painel de experimento: slider de taxa-base
+metodologia.html        2. Metodologia: como a ProPublica montou a análise
+dados.html              3. Dados: distribuição dos escores e taxas de erro por grupo
+defesa.html             4. Defesa: a resposta da Northpointe (calibração)
+painel.html             5. Painel de experimento: slider de taxa-base
 mais-informacoes.html   calibração, matrizes de confusão, metodologia (linkada em todas as páginas)
 css/style.css
 js/story.js             gráficos SVG e números do texto, a partir dos dados

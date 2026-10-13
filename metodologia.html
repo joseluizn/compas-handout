@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metodologia — Caso COMPAS</title>
+  <meta name="description" content="Como a ProPublica montou a análise: amostra, corte de alto risco, desfecho e comparação dos erros.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="topo">
+    <div class="topo-linha">
+      <a class="marca" href="index.html">Caso COMPAS</a>
+      <a class="mais" href="mais-informacoes.html">Mais informações →</a>
+    </div>
+    <nav class="abas" aria-label="Páginas do site">
+      <ol>
+        <li><a href="index.html"><span class="num">1</span>O caso</a></li>
+        <li><a href="metodologia.html" aria-current="page"><span class="num">2</span>Metodologia</a></li>
+        <li><a href="dados.html"><span class="num">3</span>Dados</a></li>
+        <li><a href="defesa.html"><span class="num">4</span>Defesa</a></li>
+        <li><a href="painel.html"><span class="num">5</span>Painel de experimento</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="passo">
+      <p class="rotulo">Metodologia</p>
+      <h2>Como a ProPublica montou a análise</h2>
+      <p>Os jornalistas pediram os escores de todos os réus avaliados em <strong>Broward County,
+          Flórida</strong>, entre 2013 e 2014, cruzaram com os registros criminais do condado e
+        esperaram dois anos para ver o que de fato aconteceu com cada pessoa. Os critérios que eles
+        fixaram antes de calcular qualquer número:</p>
+
+      <div class="caixa">
+        <h3>Os critérios da análise</h3>
+        <dl class="criterio">
+          <dt>Quem entra na amostra</dt>
+          <dd>Réus com escore atribuído na triagem de prisão, descartando casos sem registro
+            criminal correspondente, infrações de trânsito ordinárias
+            (<code>c_charge_degree = 'O'</code>) e escores ausentes.
+            Restam <strong id="n-total">—</strong> pessoas nos dois grupos comparados
+            (<span id="n-negros">—</span> réus negros e <span id="n-brancos">—</span> réus brancos).</dd>
+
+          <dt>O que conta como "alto risco"</dt>
+          <dd>Escore <strong>5 ou mais</strong>, o mesmo corte que o próprio COMPAS usa para separar
+            risco "baixo" de "médio/alto".</dd>
+
+          <dt>O que conta como acerto ou erro</dt>
+          <dd>O desfecho é <strong>ser preso de novo em até dois anos</strong> após a avaliação.
+            Quem foi preso de novo e tinha escore baixo é um falso negativo; quem não foi preso
+            de novo e tinha escore alto é um falso positivo.</dd>
+
+          <dt>Como os erros são comparados</dt>
+          <dd>Separando as pessoas <strong>pelo que aconteceu de verdade</strong> (primeiro só quem
+            não reincidiu, depois só quem reincidiu) e calculando, dentro de cada um desses grupos,
+            a fração que recebeu classificação errada. A comparação é entre réus negros e brancos.</dd>
+        </dl>
+      </div>
+      <p>Os dados brutos e o código que reproduz cada número deste site estão
+        <a href="https://github.com/joseluizn/compas-handout">no repositório</a>.
+      </p>
+    </section>
+
+  <nav class="pager" aria-label="Navegação entre páginas">
+    <a class="ant" href="index.html"><small>← Anterior</small>O caso</a>
+    <a class="prox" href="dados.html"><small>Próxima →</small>Dados</a>
+  </nav>
+
+  </main>
+
+  <footer>
+    <div class="interno">
+      <p><strong>Fontes</strong></p>
+      <ul>
+        <li>Reportagem: <a
+            href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Angwin,
+            Larson, Mattu &amp; Kirchner (2016), "Machine Bias", ProPublica</a></li>
+        <li>Metodologia: <a
+            href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">"How We Analyzed
+            the COMPAS Recidivism Algorithm"</a></li>
+        <li>Resposta da Northpointe: <a
+            href="https://embed.documentcloud.org/documents/2998391-ProPublica-Commentary-Final-070616/">Dieterich,
+            Mendoza &amp; Brennan (2016)</a></li>
+        <li>Dados: <a href="https://github.com/propublica/compas-analysis">propublica/compas-analysis</a> (domínio
+          público)</li>
+      </ul>
+      <p>Gráficos gerados a partir dos dados originais com auxílio de IA. Código e números:
+        <a href="https://github.com/joseluizn/compas-handout">github.com/joseluizn/compas-handout</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/metrics-data.js"></script>
+  <script src="js/story.js"></script>
+</body>
+
+</html>

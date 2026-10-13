@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>O caso — Caso COMPAS</title>
-  <meta name="description" content="O que é o COMPAS e o que a ProPublica afirmou: contexto e critérios da análise em Broward County.">
+  <meta name="description" content="O que é o COMPAS e o que a ProPublica afirmou: contexto do sistema e a acusação.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -19,9 +19,10 @@
     <nav class="abas" aria-label="Páginas do site">
       <ol>
         <li><a href="index.html" aria-current="page"><span class="num">1</span>O caso</a></li>
-        <li><a href="dados.html"><span class="num">2</span>Dados</a></li>
-        <li><a href="defesa.html"><span class="num">3</span>Defesa</a></li>
-        <li><a href="painel.html"><span class="num">4</span>Painel de experimento</a></li>
+        <li><a href="metodologia.html"><span class="num">2</span>Metodologia</a></li>
+        <li><a href="dados.html"><span class="num">3</span>Dados</a></li>
+        <li><a href="defesa.html"><span class="num">4</span>Defesa</a></li>
+        <li><a href="painel.html"><span class="num">5</span>Painel de experimento</a></li>
       </ol>
     </nav>
   </header>
@@ -47,55 +48,17 @@
     </section>
 
     <section class="passo">
-      <p class="rotulo">2 — A análise</p>
-      <h2>Como a ProPublica montou a análise</h2>
-      <p>Os jornalistas pediram os escores de todos os réus avaliados em <strong>Broward County,
-          Flórida</strong>, entre 2013 e 2014, cruzaram com os registros criminais do condado e
-        esperaram dois anos para ver o que de fato aconteceu com cada pessoa. Os critérios que eles
-        fixaram antes de calcular qualquer número:</p>
-
-      <div class="caixa">
-        <h3>Os critérios da análise</h3>
-        <dl class="criterio">
-          <dt>Quem entra na amostra</dt>
-          <dd>Réus com escore atribuído na triagem de prisão, descartando casos sem registro
-            criminal correspondente, infrações de trânsito ordinárias
-            (<code>c_charge_degree = 'O'</code>) e escores ausentes.
-            Restam <strong id="n-total">—</strong> pessoas nos dois grupos comparados
-            (<span id="n-negros">—</span> réus negros e <span id="n-brancos">—</span> réus brancos).</dd>
-
-          <dt>O que conta como "alto risco"</dt>
-          <dd>Escore <strong>5 ou mais</strong>, o mesmo corte que o próprio COMPAS usa para separar
-            risco "baixo" de "médio/alto".</dd>
-
-          <dt>O que conta como acerto ou erro</dt>
-          <dd>O desfecho é <strong>ser preso de novo em até dois anos</strong> após a avaliação.
-            Quem foi preso de novo e tinha escore baixo é um falso negativo; quem não foi preso
-            de novo e tinha escore alto é um falso positivo.</dd>
-
-          <dt>Como os erros são comparados</dt>
-          <dd>Separando as pessoas <strong>pelo que aconteceu de verdade</strong> (primeiro só quem
-            não reincidiu, depois só quem reincidiu) e calculando, dentro de cada um desses grupos,
-            a fração que recebeu classificação errada. A comparação é entre réus negros e brancos.</dd>
-        </dl>
-      </div>
-      <p>Os dados brutos e o código que reproduz cada número deste site estão
-        <a href="https://github.com/joseluizn/compas-handout">no repositório</a>.
-      </p>
-    </section>
-
-    <section class="passo">
-      <p class="rotulo">3 — A acusação</p>
+      <p class="rotulo">2 — A acusação</p>
       <h2>A afirmação da ProPublica</h2>
       <p>A reportagem concluiu que os erros de classificação se distribuem de forma desigual entre os
         dois grupos. O falso positivo é mais frequente entre réus negros; o falso negativo é mais
         frequente entre réus brancos, mesmo sem raça ser uma pergunta do questionário.</p>
-      <p>Os números dessa comparação estão na página <a href="dados.html">Dados</a>.</p>
+      <p>Os critérios da análise estão em <a href="metodologia.html">Metodologia</a> e os números da comparação em <a href="dados.html">Dados</a>.</p>
     </section>
 
   <nav class="pager" aria-label="Navegação entre páginas">
     <span class="vazio"></span>
-    <a class="prox" href="dados.html"><small>Próxima →</small>Dados</a>
+    <a class="prox" href="metodologia.html"><small>Próxima →</small>Metodologia</a>
   </nav>
 
   </main>
@@ -122,8 +85,6 @@
     </div>
   </footer>
 
-  <script src="js/metrics-data.js"></script>
-  <script src="js/story.js"></script>
 </body>
 
 </html>
