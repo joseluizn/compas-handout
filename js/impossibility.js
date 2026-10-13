@@ -65,9 +65,8 @@
     } else {
       nota.innerHTML = "Diferença de <strong>" +
         difFpr.toFixed(1).replace(".", ",") + " p.p.</strong> entre os dois grupos na fatia de " +
-        "quem não reincidiu e mesmo assim foi marcado como alto risco, com o sistema " +
-        "acertando exatamente na mesma proporção nos dois grupos (7 em 10 entre os de alto risco, " +
-        "8 em 10 entre os de baixo risco).";
+        "quem não reincidiu e mesmo assim foi marcado como alto risco, com as mesmas proporções " +
+        "de acerto nos dois grupos (7 em 10 entre os de alto risco, 8 em 10 entre os de baixo risco).";
     }
   }
 

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Defesa — Caso COMPAS</title>
+  <meta name="description" content="A resposta da Northpointe à ProPublica: o argumento da calibração.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="topo">
+    <div class="topo-linha">
+      <a class="marca" href="index.html">Caso COMPAS</a>
+      <a class="mais" href="mais-informacoes.html">Mais informações →</a>
+    </div>
+    <nav class="abas" aria-label="Páginas do site">
+      <ol>
+        <li><a href="index.html"><span class="num">1</span>O caso</a></li>
+        <li><a href="dados.html"><span class="num">2</span>Dados</a></li>
+        <li><a href="defesa.html" aria-current="page"><span class="num">3</span>Defesa</a></li>
+        <li><a href="painel.html"><span class="num">4</span>Painel de experimento</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="passo hero">
+      <p class="rotulo">Defesa</p>
+      <h1>A resposta da Northpointe</h1>
+    </section>
+
+    <section class="passo">
+      <p>A empresa que vende o COMPAS (hoje Equivant) aceita os números da ProPublica e
+        argumenta que o escore é <strong>calibrado</strong> igualmente entre os grupos. Um "risco 7"
+        significa a mesma probabilidade real de reincidência, seja o réu negro ou branco.
+      </p>
+      <p>Nos dados de Broward County, entre os classificados como alto risco,
+        <strong id="ppv-negros">—</strong> dos réus negros e <strong id="ppv-brancos">—</strong> dos
+        réus brancos foram de fato presos de novo em dois anos. Escore a escore, a taxa de
+        reincidência é praticamente a mesma nos dois grupos.
+      </p>
+      <p>A Northpointe argumenta que um escore sem discriminação informa o mesmo risco, na mesma
+        medida, para todos os grupos.</p>
+      <p><a href="mais-informacoes.html#calibracao">Veja a curva de calibração →</a></p>
+    </section>
+
+  <nav class="pager" aria-label="Navegação entre páginas">
+    <a class="ant" href="dados.html"><small>← Anterior</small>Dados</a>
+    <a class="prox" href="painel.html"><small>Próxima →</small>Painel de experimento</a>
+  </nav>
+
+  </main>
+
+  <footer>
+    <div class="interno">
+      <p><strong>Fontes</strong></p>
+      <ul>
+        <li>Reportagem: <a
+            href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Angwin,
+            Larson, Mattu &amp; Kirchner (2016), "Machine Bias", ProPublica</a></li>
+        <li>Metodologia: <a
+            href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">"How We Analyzed
+            the COMPAS Recidivism Algorithm"</a></li>
+        <li>Resposta da Northpointe: <a
+            href="https://embed.documentcloud.org/documents/2998391-ProPublica-Commentary-Final-070616/">Dieterich,
+            Mendoza &amp; Brennan (2016)</a></li>
+        <li>Dados: <a href="https://github.com/propublica/compas-analysis">propublica/compas-analysis</a> (domínio
+          público)</li>
+      </ul>
+      <p>Gráficos gerados a partir dos dados originais com auxílio de IA. Código e números:
+        <a href="https://github.com/joseluizn/compas-handout">github.com/joseluizn/compas-handout</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/metrics-data.js"></script>
+  <script src="js/story.js"></script>
+</body>
+
+</html>

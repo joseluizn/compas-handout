@@ -64,7 +64,7 @@
     if (!host) return;
 
     var W = 680, H = 340;
-    var m = { t: 18, r: 12, b: 46, l: 46 };
+    var m = { t: 30, r: 12, b: 46, l: 46 };
     var iw = W - m.l - m.r, ih = H - m.t - m.b;
 
     var grupos = ["negros", "brancos"];
@@ -97,6 +97,10 @@
       }, Math.round(v * 100) + "%"));
     }
 
+    svg.appendChild(el("text", {
+      x: 0, y: 12, "font-size": 13, fill: "currentColor", "fill-opacity": .65
+    }, "% dos réus do grupo"));
+
     for (var d = 1; d <= 10; d++) {
       var cx = m.l + (d - 0.5) * passo;
       grupos.forEach(function (g, i) {
@@ -120,13 +124,6 @@
     svg.appendChild(el("text", {
       x: m.l, y: H - 8, "font-size": 13, fill: "currentColor", "fill-opacity": .65
     }, "escore de risco do COMPAS (1 = mais baixo, 10 = mais alto)"));
-
-    // anotação
-    var xAnot = m.l + 0.5 * passo + 6;
-    svg.appendChild(el("text", {
-      x: xAnot, y: y(M.groups.brancos.deciles[0].share) - 10,
-      "font-size": 13, "font-weight": 700, fill: COR.brancos
-    }, "1 em cada 4 réus brancos recebe o escore mínimo"));
 
     host.innerHTML = "";
     host.appendChild(svg);
@@ -346,25 +343,6 @@
     }
   }
 
-  /* ---------- scroll reveal ---------- */
-
-  function revelar() {
-    var passos = document.querySelectorAll(".passo");
-    if (!("IntersectionObserver" in window)) {
-      passos.forEach(function (p) { p.classList.add("visivel"); });
-      return;
-    }
-    var obs = new IntersectionObserver(function (entradas) {
-      entradas.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("visivel");
-          obs.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
-    passos.forEach(function (p) { obs.observe(p); });
-  }
-
   window.COMPAS = { COR: COR, pct: pct, num: num };
 
   preencherTextos();
@@ -374,5 +352,4 @@
   matrizes("matrizes");
   tabelaCalibracao("tabela-calibracao");
   metodologia();
-  revelar();
 })();

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dados — Caso COMPAS</title>
+  <meta name="description" content="Distribuição dos escores e taxas de erro por grupo racial, Broward County, 2013–2014.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="topo">
+    <div class="topo-linha">
+      <a class="marca" href="index.html">Caso COMPAS</a>
+      <a class="mais" href="mais-informacoes.html">Mais informações →</a>
+    </div>
+    <nav class="abas" aria-label="Páginas do site">
+      <ol>
+        <li><a href="index.html"><span class="num">1</span>O caso</a></li>
+        <li><a href="dados.html" aria-current="page"><span class="num">2</span>Dados</a></li>
+        <li><a href="defesa.html"><span class="num">3</span>Defesa</a></li>
+        <li><a href="painel.html"><span class="num">4</span>Painel de experimento</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="passo hero">
+      <p class="rotulo">Dados</p>
+      <h1>Resultados da análise</h1>
+      <p class="sub">Réus negros e brancos de Broward County, Flórida, 2013–2014. Alto risco = escore 5
+        ou mais. Desfecho = nova prisão em até dois anos.</p>
+    </section>
+
+    <section class="passo">
+      <p class="rotulo">Distribuição dos escores</p>
+      <h2>Escores de risco por grupo</h2>
+      <p>Cada barra é a fatia do grupo que recebeu aquele escore.</p>
+      <div class="legenda" id="legenda-decis"></div>
+      <figure>
+        <div class="rolavel" id="grafico-decis"></div>
+        <figcaption>Distribuição dos escores de risco do COMPAS por grupo racial, Broward County
+          (2013–2014). Fonte: dados da ProPublica (propublica/compas-analysis).</figcaption>
+      </figure>
+    </section>
+
+    <section class="passo">
+      <p class="rotulo">Taxas de erro</p>
+      <h2>Taxas de erro por grupo</h2>
+      <p>Cada quadro abaixo mostra <strong>100 pessoas que tiveram o mesmo desfecho real</strong>.
+        As figuras coloridas são as que receberam classificação errada.</p>
+
+      <h3>Falso positivo: entre quem <em>não</em> voltou a ser preso, marcados como alto risco</h3>
+      <div class="waffles" id="waffles-fpr"></div>
+
+      <h3>Falso negativo: entre quem <em>voltou</em> a ser preso, marcados como baixo risco</h3>
+      <div class="waffles" id="waffles-fnr"></div>
+
+      <p class="nota-fonte">Fonte: dados da ProPublica (propublica/compas-analysis), Broward County,
+        2013–2014. Contagens brutas e matrizes de confusão em
+        <a href="mais-informacoes.html">Mais informações</a>.</p>
+    </section>
+
+  <nav class="pager" aria-label="Navegação entre páginas">
+    <a class="ant" href="index.html"><small>← Anterior</small>O caso</a>
+    <a class="prox" href="defesa.html"><small>Próxima →</small>Defesa</a>
+  </nav>
+
+  </main>
+
+  <footer>
+    <div class="interno">
+      <p><strong>Fontes</strong></p>
+      <ul>
+        <li>Reportagem: <a
+            href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Angwin,
+            Larson, Mattu &amp; Kirchner (2016), "Machine Bias", ProPublica</a></li>
+        <li>Metodologia: <a
+            href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">"How We Analyzed
+            the COMPAS Recidivism Algorithm"</a></li>
+        <li>Resposta da Northpointe: <a
+            href="https://embed.documentcloud.org/documents/2998391-ProPublica-Commentary-Final-070616/">Dieterich,
+            Mendoza &amp; Brennan (2016)</a></li>
+        <li>Dados: <a href="https://github.com/propublica/compas-analysis">propublica/compas-analysis</a> (domínio
+          público)</li>
+      </ul>
+      <p>Gráficos gerados a partir dos dados originais com auxílio de IA. Código e números:
+        <a href="https://github.com/joseluizn/compas-handout">github.com/joseluizn/compas-handout</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/metrics-data.js"></script>
+  <script src="js/story.js"></script>
+</body>
+
+</html>

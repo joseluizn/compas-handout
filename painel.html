@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de experimento — Caso COMPAS</title>
+  <meta name="description" content="Um sistema calibrado, dois grupos e uma alavanca: simulação da taxa-base.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="topo">
+    <div class="topo-linha">
+      <a class="marca" href="index.html">Caso COMPAS</a>
+      <a class="mais" href="mais-informacoes.html">Mais informações →</a>
+    </div>
+    <nav class="abas" aria-label="Páginas do site">
+      <ol>
+        <li><a href="index.html"><span class="num">1</span>O caso</a></li>
+        <li><a href="dados.html"><span class="num">2</span>Dados</a></li>
+        <li><a href="defesa.html"><span class="num">3</span>Defesa</a></li>
+        <li><a href="painel.html" aria-current="page"><span class="num">4</span>Painel de experimento</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="passo hero">
+      <p class="rotulo">Painel de experimento</p>
+      <h1>Um sistema calibrado, dois grupos, uma alavanca</h1>
+      <p class="sub">Dois grupos hipotéticos de 100 réus. Nos dois, entre os classificados como
+        <strong>alto risco, 7 em cada 10 reincidem</strong>; entre os de <strong>baixo risco, 8 em
+          cada 10 não reincidem</strong>. O Grupo 1 tem 30 reincidentes em 100.</p>
+    </section>
+
+    <section class="passo">
+      <p>O controle abaixo muda uma coisa só: <strong>quantas das 100 pessoas do Grupo 2 de fato
+          reincidiram</strong>. As proporções de acerto continuam iguais nos dois grupos. Mexa nesse
+        número e observe as taxas de erro.
+      </p>
+
+      <div class="widget">
+        <label for="slider-base">Reincidentes reais no Grupo 2: <span id="valor-base">60</span> em cada
+          100 <small>(Grupo 1 fixo em 30 em cada 100)</small></label>
+        <input type="range" id="slider-base" min="25" max="68" step="1" value="60">
+        <div class="grade-num" id="saida-widget"></div>
+        <p class="nota-widget" id="nota-widget"></p>
+      </div>
+      <p style="margin-top:1rem"><small>Modelo simplificado: em ambos os grupos, 70% dos classificados
+          como alto risco reincidem e 80% dos classificados como baixo risco não reincidem. A única
+          variável é a taxa de reincidência do Grupo 2 que, com essas duas proporções fixas, determina
+          quantas pessoas são marcadas como alto risco.</small></p>
+    </section>
+
+    <!-- <section class="passo">
+      <p class="rotulo">Tarefa</p>
+      <h2>Em grupo, ~15 minutos</h2>
+      <p>Formem grupos de 3 a 4 pessoas e discutam: <strong>quem está certo, a ProPublica ou a
+          Northpointe?</strong></p>
+      <ol class="perguntas">
+        <li>O que exatamente cada lado está medindo?</li>
+        <li>Quem paga o preço pelos erros do sistema — e esse preço é igual para todo mundo?</li>
+        <li>O que "tratar os grupos igualmente" deveria significar aqui?</li>
+      </ol>
+    </section> -->
+
+  <nav class="pager" aria-label="Navegação entre páginas">
+    <a class="ant" href="defesa.html"><small>← Anterior</small>Defesa</a>
+    <span class="vazio"></span>
+  </nav>
+
+  </main>
+
+  <footer>
+    <div class="interno">
+      <p><strong>Fontes</strong></p>
+      <ul>
+        <li>Reportagem: <a
+            href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">Angwin,
+            Larson, Mattu &amp; Kirchner (2016), "Machine Bias", ProPublica</a></li>
+        <li>Metodologia: <a
+            href="https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm">"How We Analyzed
+            the COMPAS Recidivism Algorithm"</a></li>
+        <li>Resposta da Northpointe: <a
+            href="https://embed.documentcloud.org/documents/2998391-ProPublica-Commentary-Final-070616/">Dieterich,
+            Mendoza &amp; Brennan (2016)</a></li>
+        <li>Dados: <a href="https://github.com/propublica/compas-analysis">propublica/compas-analysis</a> (domínio
+          público)</li>
+      </ul>
+      <p>Gráficos gerados a partir dos dados originais com auxílio de IA. Código e números:
+        <a href="https://github.com/joseluizn/compas-handout">github.com/joseluizn/compas-handout</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/impossibility.js"></script>
+</body>
+
+</html>
